@@ -14,9 +14,12 @@ func isPrime(n uint64) bool {
 	if n == 0 || n == 1 {
 		return false
 	}
+	if n == 2 {
+		return true
+	}
 	var i uint64
 	var limit = uint64(math.Sqrt(float64(n)))
-	for i = 2; i <= limit; i += 1 {
+	for i = 3; i <= limit; i += 2 {
 		if n%i == 0 {
 			return false
 		}
@@ -26,7 +29,7 @@ func isPrime(n uint64) bool {
 
 func nthPrime(n uint64) uint64 {
 	if n == 1 {
-		return 2
+		return 2 // handle the only even prime
 	}
 	var i uint64 = 3
 	var count uint64 = 1
@@ -38,7 +41,7 @@ func nthPrime(n uint64) uint64 {
 		if count == n {
 			return i
 		}
-		i += 2
+		i += 2 // jump by 2 because looking at odd numbers only.
 	}
 }
 
