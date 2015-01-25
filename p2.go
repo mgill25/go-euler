@@ -10,10 +10,9 @@ import (
 	"math"
 )
 
-func fib(p int) uint64 {
+func fib(n float64) uint64 {
 	// Calculate the n-th fibonacci number
 	// using the Golden ratio formula.
-	n := float64(p)
 	phi := 1.618034
 	// The formula is ((phi ^ n) - (1 - phi) ^ n) / sqrt(5)
 	rv := (math.Pow(phi, n) - math.Pow(1-phi, n)) / math.Sqrt(5)
@@ -26,12 +25,12 @@ func main() {
 	var num uint64 = 0
 
 	// Iterate over even valued numbers below 4 million
-	var i = 0 // start from 0
+	var i int = 0 // start from 0
 	for num < n {
 		// We can skip the test for even because we are jumping by 3
 		// and every 3rd fib is even.
 		sum += num
-		num = fib(i) // do this *after* adding num to sum!
+		num = fib(float64(i)) // do this *after* adding num to sum!
 		fmt.Printf("%d-th fibonacci number is: %d\n", i, num)
 		i += 3 // jump by 3.
 	}
