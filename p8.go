@@ -48,12 +48,18 @@ func main() {
 	// of maximum product seen so far.
 	maxProduct := 0
 	totalCount := 13
+
 	circularBuffer := make([]int, totalCount)
+	// Circular or Ring buffer: http://en.wikipedia.org/wiki/Circular_buffer
+	// Nice property: Once filled, starts over-writing old data. Using fill-count
+	// instead of end-pointer.
 
 	for index, bufferIndex := 0, 0; index < len(s); index++ {
-		if bufferIndex == totalCount {
-			bufferIndex = 0 // can't access more than totalCount index in buffer.
-		}
+		// if bufferIndex == totalCount {
+		// 	bufferIndex = 0 // can't access more than totalCount index in buffer.
+		// }
+
+		bufferIndex = bufferIndex % totalCount // can also toggle back to beginning with modulo.
 
 		num, err := strconv.Atoi(string(s[index]))
 		if err != nil {
