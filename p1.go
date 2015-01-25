@@ -1,5 +1,5 @@
 // p1: Sum of all multiples of 3 or 5 below 1000
-
+// +build 1
 package main
 
 import "fmt"
