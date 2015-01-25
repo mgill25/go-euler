@@ -1,4 +1,6 @@
 // p2: Sum of Even fibonacci numbers below 4 million
+// Hint: There is no need to start from 1 and 2 like the question
+// can just start from 0 or 1.
 // +build 2
 
 package main
@@ -13,6 +15,7 @@ func fib(p int) uint64 {
 	// using the Golden ratio formula.
 	n := float64(p)
 	phi := 1.618034
+	// The formula is ((phi ^ n) - (1 - phi) ^ n) / sqrt(5)
 	rv := (math.Pow(phi, n) - math.Pow(1-phi, n)) / math.Sqrt(5)
 	return uint64(rv)
 }
@@ -23,14 +26,14 @@ func main() {
 	var num uint64 = 0
 
 	// Iterate over even valued numbers below 4 million
-	var i = 1
+	var i = 0 // start from 0
 	for num < n {
-		if num%2 == 0 {
-			sum += num
-		}
-		// fmt.Printf("%d-th fibonacci number is: %d\n", i, num)
+		// We can skip the test for even because we are jumping by 3
+		// and every 3rd fib is even.
+		sum += num
 		num = fib(i) // do this *after* adding num to sum!
-		i += 1
+		fmt.Printf("%d-th fibonacci number is: %d\n", i, num)
+		i += 3 // jump by 3.
 	}
 
 	fmt.Printf("Sum is: %d\n", sum)
