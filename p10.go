@@ -15,7 +15,6 @@ func isPrime(n int) bool {
 	var i int
 	var limit = int(math.Sqrt(float64(n)))
 	for i = 2; i <= limit; i += 1 {
-		fmt.Printf("Considering %d\t", i)
 		if n%i == 0 {
 			return false
 		}

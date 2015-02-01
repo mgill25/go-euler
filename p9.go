@@ -10,6 +10,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"time"
 )
 
 func iterateTriples() int {
@@ -39,6 +40,9 @@ func main() {
 	// The given example can be generated using the values m = 2, n = 1
 	// We start from there and iterate until we find a triplet for which
 	// the sum of a, b and c is 1000
+	t0 := time.Now()
 	result := iterateTriples()
 	fmt.Println("Result is: ", result)
+	t1 := time.Now()
+	fmt.Println(t1.Sub(t0))
 }
