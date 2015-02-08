@@ -73,7 +73,7 @@ func main() {
 	num := 1
 	count := 2
 	for !found {
-		fmt.Println(num, ": ", countFactors(num))
+		// fmt.Println(num, ": ", countFactors(num))
 		if countFactors(num) > 500 {
 			fmt.Println("Found: ", num)
 			found = true
